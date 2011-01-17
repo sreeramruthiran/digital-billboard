@@ -31,6 +31,10 @@ public class BillboardManager {
 		
 	}
 	public List<Billboard> getAllBillboards(){
+		//Add SQL code here
+		/* New array list 
+		 * connection Billboard 
+		 */
 		return null;
 	}
 	
