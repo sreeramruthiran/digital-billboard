@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.threecdc.billboard.dto.Billboard;
-import com.threecdc.billboard.dto.TickerText;
 
 public class BillboardManager {
 	public Billboard addBillboard(Billboard newBillboard){
@@ -23,22 +22,12 @@ public class BillboardManager {
 	public void deleteBillboard(int id){
 		
 	}
-	public TickerText addTicker(TickerText newTicker){
-		return null;
-	}
-	public TickerText saveTicker(TickerText t){
-		return null;
-	}
-	public TickerText getTicker(int id){
-		return null;
-	}
-	public void deleteTicker(int id){
-		
-	}
-	public List<Billboard> getAllBillboards(){
+
+	public static List<Billboard> getAllBillboards(){
 		List<Billboard> results = new ArrayList<Billboard>();
+		Connection conn = null;
 		try{
-			Connection conn = DbManager.getConnection();
+			conn = DbManager.getConnection();
 			String sql="select * from billboard Order By createDate";
 			PreparedStatement pStatement = conn.prepareStatement(sql);
 			ResultSet rs = pStatement.executeQuery();
@@ -55,6 +44,8 @@ public class BillboardManager {
 		} catch (SQLException exc){
 			System.err.println("Get All Billboard Failed to retrieve from database");
 			exc.printStackTrace();
+		} finally {
+			DbManager.releaseConnection(conn);
 		}
 		System.out.println("Returned " + results.size() + " Billboards");
 		return results;

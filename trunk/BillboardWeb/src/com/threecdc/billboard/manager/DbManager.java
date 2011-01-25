@@ -25,6 +25,9 @@ public class DbManager {
 		return conn;
 	}
 	public static void releaseConnection(Connection releaseConn) {
+		if (releaseConn == null)
+			return;
+		
 		 try {
 			releaseConn.close();
 		} catch (SQLException e) {
