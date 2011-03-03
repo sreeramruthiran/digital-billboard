@@ -1,12 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@page import="com.threecdc.billboard.dto.User"%>
+<%@page import="com.threecdc.billboard.manager.UserManager"%>
+<% 
+User u = null;
+if (request.getParameter("actioncommand")!= null){
+	String username=request.getParameter("username");
+	String password=request.getParameter("password");
+	u = UserManager.authenticateUser(username, password);
+	if (u != null) {
+		response.sendRedirect("test.jsp");
+	}
+}
+%>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>Login</title>
 <link href="stylelog.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
+      <% if (u == null && request.getParameter("actioncommand")!= null){
+    	  %>
+      <center><h2><font color="red">Login Failed</font></h2></center>
+     <%} %>
 <div id="layer01_holder">
   <div id="left"></div>
   <div id="center"></div>
@@ -27,15 +42,15 @@
     <td>LOGIN<br /><br /></td>
   </tr>
   <tr>
-    <td><form id="form1" name="form1" method="post" action="">
-      <label>Nama  
-        <input name="textfield" type="text" id="textfield" />
+    <td><form id="form1" name="logonform" method="post" action="">
+      <label>Name
+        <input name="username" type="text" id="textfield" />
       </label>
       <label>Password  
-      <input type="text" name="textfield2" id="textfield2" style="margin-top:5px;" />
+      <input type="password" name="password" id="textfield2" style="margin-top:5px;" />
       </label>
       <label>
-       <input type="submit" name="button" id="button" value="Submit" />
+       <input type="submit" name="actioncommand" id="button" value="Submit" />
       </label>
     </form>    </td>
   </tr>
