@@ -10,8 +10,23 @@ public class TickerTextManager {
 	public TickerText addTicker(TickerText newTicker){
 		return null;
 	}
-	public TickerText saveTicker(TickerText t){
-		return null;
+	public static void saveTickerText(String tickertext){
+		Connection conn = null;
+		try{
+			conn = DbManager.getConnection();
+			String sql="update tickertext set tickerText = (?) where id=1";
+			PreparedStatement pStatement = conn.prepareStatement(sql);
+			pStatement.setString(1, tickertext);
+			pStatement.execute();
+
+		} catch (SQLException exc){
+			System.err.println("Failed to Save Ticker Text");
+			exc.printStackTrace();
+		}
+		finally {
+			DbManager.releaseConnection(conn);
+		}
+		System.out.println("Updated TickerTexts ");
 	}
 	public TickerText getTicker(int id){
 		return null;
@@ -19,7 +34,7 @@ public class TickerTextManager {
 	public void deleteTicker(int id){
 		
 	}
-	public TickerText getNextTicker(){
+	public static TickerText getNextTicker(){
 		TickerText tickertextb = new TickerText();
 		Connection conn = null;
 		try{
