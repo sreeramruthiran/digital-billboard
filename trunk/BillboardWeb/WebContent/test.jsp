@@ -29,9 +29,11 @@ if ("OutputPage".equals(action)){
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Test JSP</title>
+<title>Billboard Application</title>
+<link href="stylelog.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<font color="#FFFFFF">
 <form method="post" action="/test.jsp">
 
 <table>
@@ -51,6 +53,7 @@ for (Billboard b: list){
 <input type="submit" name="action" value="OutputPage"/>
 <br/>
 <br/>
+</font>
 <textarea name="tickertext" rows="5" cols="60"><%= TickerTextManager.getNextTicker().getTickerText() %></textarea>
 <br/>
 <input type="submit" name="action" value="SaveTicker">

@@ -67,7 +67,7 @@ if (request.getParameter("actioncommand")!= null){
 </div>
 
 <div id="layer05_holder">
-  <div align="left">Copyright Â© 2007, Artfans Design</div>
+  <div align="left">Copyright © 2007, Artfans Design</div>
 </div>
 </body>
 </html>

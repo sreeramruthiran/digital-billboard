@@ -22,8 +22,12 @@ if (bc==null){
 <meta http-equiv="refresh" content="10;url=/showbillboard.jsp?id=<%= bc.getId() %>"/>
 <html>
 <body style="background-color: transparent;">
-<%= bc.getDisplayText() %>
 
+<div style="text-align:center;">
+<font size="5">
+<%= bc.getDisplayText() %>
+</font>
+</div>
 
 </body>
 </html>
