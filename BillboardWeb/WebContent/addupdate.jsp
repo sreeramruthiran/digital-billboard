@@ -26,7 +26,8 @@ else if("Save".equals(action)){
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Edit</title>
+<title>Add/Update</title>
+<link href="stylelog.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <form method="post" action="/addupdate.jsp">

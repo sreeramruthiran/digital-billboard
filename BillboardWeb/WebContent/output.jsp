@@ -10,16 +10,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Output</title>
+<link href="stylelog.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<table border="1" background="background.jpg">
+<table border="0" height="288" width="512" background="background.jpg">
 <tr>
-<td width="256" height="268">1</td>
-<td width="256" height="268"><iframe allowtransparency="true" frameborder="0" height="268" width="256" src="showbillboard.jsp"></iframe></td>
+<td width="256" height="258">&nbsp;</td>
+<td width="256" height="258">
+<iframe allowtransparency="true" scrolling="no" frameborder="0" height="50%" width="256" src="showbillboard.jsp">
+</iframe>
+</td>
 </tr>
-
 <tr>
-<td colspan="2" width="512" height="20"> <DIV ID="TICKER" STYLE="overflow:hidden; width:520px">
+<td colspan="2" width="512" height="30"> <DIV ID="TICKER" STYLE="overflow:hidden; width:512px">
      <%= TickerTextManager.getNextTicker().getTickerText() %>
     </DIV>
     <script type="text/javascript" src="webticker_lib.js"></script></td>
