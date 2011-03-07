@@ -6,7 +6,7 @@ TICKER_CONTENT = document.getElementById("TICKER").innerHTML;
  
 TICKER_RIGHTTOLEFT = false;
 TICKER_SPEED = 2;
-TICKER_STYLE = "font-family:Arial; font-size:16px; color:#000000";
+TICKER_STYLE = "font-family:Arial; font-size:16px; color:#FFFFFF";
 TICKER_PAUSED = false;
 
 ticker_start();
