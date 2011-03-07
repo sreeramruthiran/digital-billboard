@@ -13,7 +13,7 @@
 <link href="stylelog.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<table border="0" height="288" width="512" background="background.jpg">
+<table border="0" height="288" width="512" background="background.jpg" cellspacing="0" cellpadding="0">
 <tr>
 <td width="256" height="258">&nbsp;</td>
 <td width="256" height="258">
