@@ -19,14 +19,16 @@ if (bc==null){
 	bc=list.get(0);
 }
 %>
+
 <meta http-equiv="refresh" content="10;url=/showbillboard.jsp?id=<%= bc.getId() %>"/>
 <html>
+<link href="CSS_Template_<%= getServletContext().getAttribute("style") %>.css" rel="stylesheet" type="text/css" />
 <body style="background-color: transparent;">
 
 <div style="text-align:center;">
-<font size="5">
+<div class = "BillboardText">
 <%= bc.getDisplayText() %>
-</font>
+</div>
 </div>
 
 </body>

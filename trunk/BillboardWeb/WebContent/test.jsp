@@ -24,6 +24,12 @@ if ("SaveTicker".equals(action)){
 if ("OutputPage".equals(action)){
 	response.sendRedirect("/output.jsp");
 	
+	
+}
+
+if ("SetStyle".equals(action)){
+	getServletContext().setAttribute("style",request.getParameter("cssid"));
+	
 }
 %>
 <html>
@@ -58,6 +64,31 @@ for (Billboard b: list){
 <br/>
 <input type="submit" name="action" value="SaveTicker">
 
-</body>
 </form>
+
+<form method="post" action="/test.jsp" id="csstemplate">
+<input onClick="document.csstemplate.submit()" type="radio" name="cssid" value="1">CSSTemplate1
+<input type="radio" name="cssid" value="2">CSSTemplate2
+<hidden name="action" value="SetStyle"/>
+</form>
+
+</br>
+</br>
+<table border="0" height="288" width="512" background="background.jpg" cellspacing="0" cellpadding="0">
+<tr>
+<td width="256" height="258">&nbsp;</td>
+<td width="256" height="258">
+<iframe allowtransparency="true" scrolling="no" frameborder="0" height="50%" width="256" src="showbillboard.jsp">
+</iframe>
+</td>
+</tr>
+<tr>
+<td colspan="2" width="512" height="30"> <DIV ID="TICKER" STYLE="overflow:hidden; width:512px">
+     <%= TickerTextManager.getNextTicker().getTickerText() %>
+    </DIV>
+    <script type="text/javascript" src="webticker_lib.js"></script></td>
+</tr>
+
+</table>
+</body>
 </html>
