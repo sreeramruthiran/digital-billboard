@@ -10,10 +10,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Output</title>
+<link href="CSS_Template_<%= getServletContext().getAttribute("style") %>.css" rel="stylesheet" type="text/css" />
 <link href="stylelog.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
-<table border="0" height="288" width="512" background="background.jpg" cellspacing="0" cellpadding="0">
+<table class = "BillboardBackground" border="0" height="288" width="512" cellspacing="0" cellpadding="0">
 <tr>
 <td width="256" height="258">&nbsp;</td>
 <td width="256" height="258">
