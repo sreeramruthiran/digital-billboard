@@ -23,14 +23,19 @@ if ("SaveTicker".equals(action)){
 }
 if ("OutputPage".equals(action)){
 	response.sendRedirect("/output.jsp");
-	
-	
 }
 
 if ("SetStyle".equals(action)){
 	getServletContext().setAttribute("style",request.getParameter("cssid"));
-	
+	System.out.println("requestgetparameter="+request.getParameter("cssid"));
 }
+
+if ("SetPicture".equals(action)){
+}
+
+String cssbutton = (String)getServletContext().getAttribute("style");
+System.out.println("cssbutton="+cssbutton);
+
 %>
 <html>
 <head>
@@ -66,10 +71,24 @@ for (Billboard b: list){
 
 </form>
 
-<form method="post" action="/test.jsp" id="csstemplate">
-<input onClick="document.csstemplate.submit()" type="radio" name="cssid" value="1">CSSTemplate1
-<input type="radio" name="cssid" value="2">CSSTemplate2
-<hidden name="action" value="SetStyle"/>
+<form name="csstemplate" method="post" action="/test.jsp" id="csstemplate">
+<input onClick="document.csstemplate.submit()" type="radio" name="cssid" value="1" <%= "1".equals(cssbutton)?"checked":"" %>>CSSTemplate1
+<input onClick="document.csstemplate.submit()" type="radio" name="cssid" value="2" <%= "2".equals(cssbutton)?"checked":"" %>>CSSTemplate2
+<input type="hidden" name="action" value="SetStyle"/>
+</form>
+</br>
+</br>
+
+<p>
+<h1>
+Picture Upload
+</h1>
+</p>
+<FORM ENCTYPE='multipart/form-data' name="pictureupload" method="post" action="/test.jsp" id="pictureupload">
+<input type="file" name="picture1"/>
+</br>
+<input type="submit" name="action" value="SetPicture"/>
+
 </form>
 
 </br>
