@@ -84,7 +84,7 @@ for (Billboard b: list){
 Picture Upload
 </h1>
 </p>
-<FORM ENCTYPE='multipart/form-data' name="pictureupload" method="post" action="/test.jsp" id="pictureupload">
+<FORM ENCTYPE='multipart/form-data' name="pictureupload" method="post" action="/single_upload_page.jsp" id="pictureupload">
 <input type="file" name="picture1"/>
 </br>
 <input type="submit" name="action" value="SetPicture"/>
@@ -93,9 +93,9 @@ Picture Upload
 
 </br>
 </br>
-<table border="0" height="288" width="512" background="background.jpg" cellspacing="0" cellpadding="0">
+<table border="0" style="background-image:url('background.jpg')" height="288" width="512" cellspacing="0" cellpadding="0">
 <tr>
-<td width="256" height="258">&nbsp;</td>
+<td width="256" height="258"><img src="/images/bannerimage.jpg"/></td>
 <td width="256" height="258">
 <iframe allowtransparency="true" scrolling="no" frameborder="0" height="50%" width="256" src="showbillboard.jsp">
 </iframe>
