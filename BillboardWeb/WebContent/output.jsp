@@ -15,7 +15,7 @@
 </head>
 
 <body>
-<table class = "BillboardBackground" border="0" height="288" width="512" cellspacing="0" cellpadding="0">
+<table border="0" style="background-image:url('background.jpg')" height="288" width="512" cellspacing="0" cellpadding="0">
 <tr>
 <td width="256" height="258"><img src="/images/bannerimage.jpg"/></td>
 <td width="256" height="258">

@@ -1,6 +1,7 @@
 <%@page import="com.threecdc.billboard.manager.TickerTextManager"%>
 <%@page import="com.threecdc.billboard.manager.BillboardManager"%>
 <%@page import="com.threecdc.billboard.dto.Billboard"%>
+<%@page import="com.threecdc.billboard.dto.User"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -23,6 +24,9 @@ if ("SaveTicker".equals(action)){
 }
 if ("OutputPage".equals(action)){
 	response.sendRedirect("/output.jsp");
+}
+if ("UserMaint".equals(action)){
+	response.sendRedirect("/userlist.jsp");
 }
 
 if ("SetStyle".equals(action)){
@@ -62,6 +66,15 @@ for (Billboard b: list){
 <input type="submit" name="action" value="Update"/>
 <input type="submit" name="action" value="Delete"/>
 <input type="submit" name="action" value="OutputPage"/>
+<%
+ User u =(User)request.getSession().getAttribute("user");
+
+if (u != null && u.getUsername().equals("admin")){
+%>
+<input type="submit" name="action" value="UserMaint"/>
+<%
+}
+%>
 <br/>
 <br/>
 </font>

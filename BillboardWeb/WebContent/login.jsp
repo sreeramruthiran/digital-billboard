@@ -7,6 +7,7 @@ if (request.getParameter("actioncommand")!= null){
 	String password=request.getParameter("password");
 	u = UserManager.authenticateUser(username, password);
 	if (u != null) {
+		request.getSession().setAttribute("user",u);
 		response.sendRedirect("test.jsp");
 	}
 }
