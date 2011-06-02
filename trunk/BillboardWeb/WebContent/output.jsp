@@ -2,10 +2,14 @@
 <%@page import="com.threecdc.billboard.dto.TickerText"%>
 <%@page import="com.threecdc.billboard.manager.BillboardManager"%>
 <%@page import="com.threecdc.billboard.dto.Billboard"%>
+<%@page import="com.threecdc.billboard.dto.User"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%
+User u =(User)request.getSession().getAttribute("user");
+%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -25,7 +29,7 @@
 </tr>
 <tr>
 <td colspan="2" width="512" height="30"> <DIV ID="TICKER" STYLE="overflow:hidden; width:512px">
-     <%= TickerTextManager.getNextTicker().getTickerText() %>
+     <%= TickerTextManager.getNextTicker(u.getId()).getTickerText() %>
     </DIV>
     <script type="text/javascript" src="webticker_lib.js"></script></td>
 </tr>

@@ -20,7 +20,7 @@ public class BillboardManager {
 			String sql = null;
 			conn = DbManager.getConnection();
 			if (b.getId()==0){
-				sql="insert into billboard (displayText, createDate) Values (?,?)";
+				sql="insert into billboard (displayText, createDate, userid) Values (?,?,?)";
 			}
 			else {
 				sql="update billboard set displayText = ? where id = ?";
@@ -29,6 +29,7 @@ public class BillboardManager {
 			if (b.getId()==0){
 				pStatement.setString(1, b.getDisplayText());
 				pStatement.setDate(2, new java.sql.Date(System.currentTimeMillis()));
+				pStatement.setInt(3, b.getUserid());
 			}
 			else {
 				pStatement.setString(1, b.getDisplayText());
@@ -64,6 +65,7 @@ public class BillboardManager {
 				billboardb.setCreateDate(rs.getDate("createDate"));
 				billboardb.setVisable(rs.getBoolean("isVisable"));
 				billboardb.setOwnerName(rs.getString("ownerName"));
+				billboardb.setUserid(rs.getInt("userid"));
 				
 			}
 		} catch (SQLException exc){
@@ -96,13 +98,14 @@ public class BillboardManager {
 		System.out.println("Delete " + id + " Billboards");
 	}
 
-	public static List<Billboard> getAllBillboards(){
+	public static List<Billboard> getAllBillboards(int userid){
 		List<Billboard> results = new ArrayList<Billboard>();
 		Connection conn = null;
 		try{
 			conn = DbManager.getConnection();
-			String sql="select * from billboard Order By createDate";
+			String sql="select * from billboard Where userid = ? Order By createDate";
 			PreparedStatement pStatement = conn.prepareStatement(sql);
+			pStatement.setInt(1, userid);
 			ResultSet rs = pStatement.executeQuery();
 			while (rs.next()){
 				Billboard billboardb = new Billboard();
@@ -111,6 +114,7 @@ public class BillboardManager {
 				billboardb.setCreateDate(rs.getDate("createDate"));
 				billboardb.setVisable(rs.getBoolean("isVisable"));
 				billboardb.setOwnerName(rs.getString("ownerName"));
+				billboardb.setUserid(rs.getInt("userid"));
 				
 				results.add(billboardb);
 			}
