@@ -7,6 +7,8 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
+User u =(User)request.getSession().getAttribute("user");
+
 String action=request.getParameter("action");
 if ("Add".equals(action) || "Update".equals(action)){
 	getServletContext().getRequestDispatcher("/addupdate.jsp").forward(request,response);
@@ -18,7 +20,7 @@ if ("Delete".equals(action)){
 	
 }
 if ("SaveTicker".equals(action)){
-	TickerTextManager.saveTickerText((request.getParameter("tickertext")));
+	TickerTextManager.saveTickerText((request.getParameter("tickertext")),u.getId());
 	response.sendRedirect("/test.jsp");
 	
 }
@@ -54,7 +56,7 @@ System.out.println("cssbutton="+cssbutton);
 <table>
 
 <%
-List<Billboard> list = BillboardManager.getAllBillboards(); 
+List<Billboard> list = BillboardManager.getAllBillboards(u.getId()); 
 for (Billboard b: list){
 %>
 	<tr> <td> <input type="radio" name="billboardid" value="<%= b.getId() %>"> <%= b.getDisplayText() %> </td> </tr> 
@@ -67,8 +69,6 @@ for (Billboard b: list){
 <input type="submit" name="action" value="Delete"/>
 <input type="submit" name="action" value="OutputPage"/>
 <%
- User u =(User)request.getSession().getAttribute("user");
-
 if (u != null && u.getUsername().equals("admin")){
 %>
 <input type="submit" name="action" value="UserMaint"/>
@@ -78,7 +78,7 @@ if (u != null && u.getUsername().equals("admin")){
 <br/>
 <br/>
 </font>
-<textarea name="tickertext" rows="5" cols="60"><%= TickerTextManager.getNextTicker().getTickerText() %></textarea>
+<textarea name="tickertext" rows="5" cols="60"><%= TickerTextManager.getNextTicker(u.getId()).getTickerText() %></textarea>
 <br/>
 <input type="submit" name="action" value="SaveTicker">
 
@@ -108,7 +108,7 @@ Picture Upload
 </br>
 <table border="0" style="background-image:url('background.jpg')" height="288" width="512" cellspacing="0" cellpadding="0">
 <tr>
-<td width="256" height="258"><img src="/images/bannerimage.jpg"/></td>
+<td width="256" height="258"><img src="/images/<%=String.valueOf(u.getId()) %>bannerimage.jpg"/></td>
 <td width="256" height="258">
 <iframe allowtransparency="true" scrolling="no" frameborder="0" height="50%" width="256" src="showbillboard.jsp">
 </iframe>
@@ -116,7 +116,7 @@ Picture Upload
 </tr>
 <tr>
 <td colspan="2" width="512" height="30"> <DIV ID="TICKER" STYLE="overflow:hidden; width:512px">
-     <%= TickerTextManager.getNextTicker().getTickerText() %>
+     <%= TickerTextManager.getNextTicker(u.getId()).getTickerText() %>
     </DIV>
     <script type="text/javascript" src="webticker_lib.js"></script></td>
 </tr>

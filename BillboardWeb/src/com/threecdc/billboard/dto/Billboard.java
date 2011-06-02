@@ -9,6 +9,7 @@ public class Billboard {
 	private Date createDate;
 	private boolean isVisable;
 	private String ownerName;
+	private int userid;
 	
 	//Methods Start
 	public int getId() {
@@ -46,6 +47,12 @@ public class Billboard {
 	}
 	public void setOwnerName(String ownerName) {
 		this.ownerName = ownerName;
+	}
+	public int getUserid() {
+		return userid;
+	}
+	public void setUserid(int userid) {
+		this.userid = userid;
 	}
 	
 	

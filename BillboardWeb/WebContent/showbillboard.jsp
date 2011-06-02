@@ -2,13 +2,17 @@
 <%@page import="com.threecdc.billboard.dto.TickerText"%>
 <%@page import="com.threecdc.billboard.manager.BillboardManager"%>
 <%@page import="com.threecdc.billboard.dto.Billboard"%>
+<%@page import="com.threecdc.billboard.dto.User"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<% Billboard bc = null;
+<% 
+User u =(User)request.getSession().getAttribute("user");
+
+Billboard bc = null;
 String id=request.getParameter("id");
-List<Billboard> list = BillboardManager.getAllBillboards(); 
+List<Billboard> list = BillboardManager.getAllBillboards(u.getId()); 
 for (Billboard b: list){
 	if (id==null || Integer.parseInt(id)<b.getId()){
 		bc=b;

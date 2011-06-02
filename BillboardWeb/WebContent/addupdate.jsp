@@ -1,9 +1,12 @@
 <%@page import="com.threecdc.billboard.manager.BillboardManager"%>
 <%@page import="com.threecdc.billboard.dto.Billboard"%>
+<%@page import="com.threecdc.billboard.dto.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
+User u =(User)request.getSession().getAttribute("user");
+
 String action = request.getParameter("action");
 Billboard b = new Billboard();
 if ("Update".equals(action)){
@@ -17,7 +20,8 @@ else if("Save".equals(action)){
 	String displaytext = request.getParameter("displaytext");
 	b = new Billboard();
 	b.setId(Integer.parseInt(id));
-	b.setDisplayText(displaytext);	
+	b.setDisplayText(displaytext);
+	b.setUserid(u.getId());
 	BillboardManager.saveBillboard(b);
 	response.sendRedirect("/test.jsp");
 }

@@ -1,5 +1,9 @@
 <%@ page import="java.io.*"%>
+<%@page import="com.threecdc.billboard.dto.User"%>
 <%
+
+User u =(User)request.getSession().getAttribute("user");
+
 	//to get the content type information from JSP Request Header
 	String contentType = request.getContentType();
 	//here we are checking the content type is not equal to Null and as well as the passed data from mulitpart/form-data is greater than or equal to 0
@@ -34,7 +38,7 @@
 		int startPos = ((file.substring(0, pos)).getBytes()).length;
 		int endPos = ((file.substring(0, boundaryLocation)).getBytes()).length;
 		// creating a new file with the same name and writing the content in new file
-		FileOutputStream fileOut = new FileOutputStream(getServletContext().getRealPath("images") + "/" + "bannerimage.jpg");
+		FileOutputStream fileOut = new FileOutputStream(getServletContext().getRealPath("images") + "/" + String.valueOf(u.getId())+ "bannerimage.jpg");
 		fileOut.write(dataBytes, startPos, (endPos - startPos));
 		fileOut.flush();
 		fileOut.close();

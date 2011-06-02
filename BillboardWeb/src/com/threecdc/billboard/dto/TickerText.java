@@ -7,6 +7,7 @@ public class TickerText {
 	private String tickerText;
 	private Date createDate;
 	private boolean isVisable;
+	private int userid;
 	
 	//Methods start
 	public int getId() {
@@ -32,6 +33,12 @@ public class TickerText {
 	}
 	public void setVisable(boolean isVisable) {
 		this.isVisable = isVisable;
+	}
+	public int getUserid() {
+		return userid;
+	}
+	public void setUserid(int userid) {
+		this.userid = userid;
 	}
 	
 
