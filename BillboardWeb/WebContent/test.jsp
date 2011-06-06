@@ -51,6 +51,9 @@ System.out.println("cssbutton="+cssbutton);
 </head>
 <body>
 <font color="#FFFFFF">
+<p align="right">
+<a href="http://localhost:8080/login.jsp">Logout</a>
+</p>
 <form method="post" action="/test.jsp">
 
 <table>
@@ -84,6 +87,8 @@ if (u != null && u.getUsername().equals("admin")){
 
 </form>
 
+<font color="#ffffff">
+
 <form name="csstemplate" method="post" action="/test.jsp" id="csstemplate">
 <input onClick="document.csstemplate.submit()" type="radio" name="cssid" value="1" <%= "1".equals(cssbutton)?"checked":"" %>>CSSTemplate1
 <input onClick="document.csstemplate.submit()" type="radio" name="cssid" value="2" <%= "2".equals(cssbutton)?"checked":"" %>>CSSTemplate2
@@ -91,10 +96,14 @@ if (u != null && u.getUsername().equals("admin")){
 </form>
 </br>
 </br>
+</font>
 
 <p>
 <h1>
+<font color="#ffffff">
 Picture Upload
+</font>
+
 </h1>
 </p>
 <FORM ENCTYPE='multipart/form-data' name="pictureupload" method="post" action="/single_upload_page.jsp" id="pictureupload">

@@ -51,6 +51,9 @@ User u =(User)request.getSession().getAttribute("user");
 		%>
 		</td>
 	</tr>
+	<p align="right">
+<a href="http://localhost:8080/test.jsp">Back</a>
+</p>
 </table>
 <%
 	}

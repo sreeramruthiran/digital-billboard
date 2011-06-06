@@ -21,7 +21,7 @@ User u =(User)request.getSession().getAttribute("user");
 <body>
 <table border="0" style="background-image:url('background.jpg')" height="288" width="512" cellspacing="0" cellpadding="0">
 <tr>
-<td width="256" height="258"><img src="/images/bannerimage.jpg"/></td>
+<td width="256" height="258"><img src="/images/<%=String.valueOf(u.getId()) %>bannerimage.jpg"/></td>
 <td width="256" height="258">
 <iframe allowtransparency="true" scrolling="no" frameborder="0" height="50%" width="256" src="showbillboard.jsp">
 </iframe>
@@ -35,5 +35,8 @@ User u =(User)request.getSession().getAttribute("user");
 </tr>
 
 </table>
+<p align="right">
+<a href="http://localhost:8080/test.jsp">Back</a>
+</p>
 </body>
 </html>
