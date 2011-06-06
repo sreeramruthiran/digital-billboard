@@ -23,6 +23,9 @@ if ("Delete".equals(action)){
 <link href="stylelog.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<p align="right">
+<a href="http://localhost:8080/test.jsp">Back</a>
+</p>
 <form method="post" action="/userlist.jsp">
 
 
