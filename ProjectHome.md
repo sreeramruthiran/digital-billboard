@@ -1,0 +1,1 @@
+To create a web application that uses J2EE to develop a web interface that will allow an administrative assistant to create billboards that will be properly formatted to show on Fountain Square in Cincinnati, Ohio.  This would need to make use of open source technology.
